@@ -32,7 +32,7 @@ export default function Result() {
                     "max_tokens": 1500
                 },
                 {
-                    headers: { Authorization: `Bearer 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` }
+                    headers: { Authorization: `Bearer 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` }
                 }
             )
             console.log(result.data.choices[0].text)
@@ -48,10 +48,13 @@ export default function Result() {
 
     return (
         <div className='home-width p-3'>
-            <h1 className='text-center'>Result</h1>
             <hr></hr>
             {
-                isLoading ? <p>Loading</p> : <ReactMarkdown>{result}</ReactMarkdown>
+                isLoading ? <p>Loading... (This could take up to a minute)</p> :
+                    <>
+                        <h1 className='text-center'>Result</h1>
+                        <ReactMarkdown>{result}</ReactMarkdown>
+                    </>
             }
         </div>
     )
