@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../Hooks/hooks';
+import { useAppSelector } from '../Hooks/hooks';
 
 export default function Summary() {
-    const dispatch = useAppDispatch();
     const skills = useAppSelector(state => state.skills);
     const userData = useAppSelector(state => state.userData);
 
@@ -13,7 +12,7 @@ export default function Summary() {
             <hr></hr>
             <div className='text-center'>
                 <div>My name is {userData.name}, I'm from {userData.location}.</div>
-                {userData.education == 'None' ? <div>I have no previous education.</div> :
+                {userData.education === 'None' ? <div>I have no previous education.</div> :
                     <>
                         <div>I have a {userData.education} from {userData.schoolName}</div>
                     </>}

@@ -14,13 +14,13 @@ export default function Result() {
 
             const skillsString = skills.join(', ')
             let prompt = ''
-            if (userData.education == 'None') {
+            if (userData.education === 'None') {
                 prompt = `Generate cover letter for a ${userData.position} position at ${userData.companyName}. The name of the applicant is ${userData.name}, they are from ${userData.location}. Skills include . Letter is addressed to ${userData.companyName} Hiring Committee. Candidate is skilled in: ${skillsString}.`
             }
-            else if (userData.education == 'High School Degree') {
+            else if (userData.education === 'High School Degree') {
                 prompt = `Generate cover letter for a ${userData.position} position at ${userData.companyName}. The name of the applicant is ${userData.name}, they are from ${userData.location}. The applicant education is a ${userData.education} from ${userData.schoolName}. Skills include . Letter is addressed to ${userData.companyName} Hiring Committee. Candidate is skilled in: ${skillsString}.`
             }
-            else if (userData.education == "Bachelor's Degree") {
+            else if (userData.education === "Bachelor's Degree" || userData.education === "PhD") {
                 prompt = `Generate cover letter for a ${userData.position} position at ${userData.companyName}. The name of the applicant is ${userData.name}, they are from ${userData.location}. The applicant education is a ${userData.education} in ${userData.degree} from ${userData.schoolName}. Skills include . Letter is addressed to ${userData.companyName} Hiring Committee. Candidate is skilled in: ${skillsString}.`
             }
 
@@ -28,7 +28,7 @@ export default function Result() {
                 "https://api.openai.com/v1/completions",
                 {
                     "model": "text-davinci-003",
-                    "prompt": `Generate cover letter for a ${userData.position} position at ${userData.companyName}. The name of the applicant is ${userData.name}, they are from ${userData.location}. The applicant education is a ${userData.education} from ${userData.schoolName}. Skills include . Letter is addressed to ${userData.companyName} Hiring Committee. Candidate is skilled in: ${skillsString}.`,
+                    "prompt": prompt,
                     "max_tokens": 1500
                 },
                 {

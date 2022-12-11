@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../Hooks/hooks';
 import { setUserData } from '../Slices/FormSlice'
 
@@ -15,19 +15,16 @@ export default function CoverLetterEditor() {
   const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setUserData({ userData: { ...userData, [event.target.name]: event.target.value } }))
   }
-  const handleTextArea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    dispatch(setUserData({ userData: { ...userData, [event.target.name]: event.target.value } }))
-  }
   const onSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     let validated = false;
-    if (userData.education != "Bachelor's Degree" && userData.education != "PhD") {
-      if (userData.name == '' ||
-        userData.education == '' ||
-        userData.schoolName == '' ||
-        userData.location == '' ||
-        userData.companyName == '' ||
-        userData.position == '') {
+    if (userData.education !== "Bachelor's Degree" && userData.education !== "PhD") {
+      if (userData.name === '' ||
+        userData.education === '' ||
+        userData.schoolName === '' ||
+        userData.location === '' ||
+        userData.companyName === '' ||
+        userData.position === '') {
         validated = false;
       }
       else {
@@ -35,12 +32,12 @@ export default function CoverLetterEditor() {
       }
     }
     else {
-      if (userData.name == '' ||
-        userData.schoolName == '' ||
-        userData.degree == '' ||
-        userData.location == '' ||
-        userData.companyName == '' ||
-        userData.position == '') {
+      if (userData.name === '' ||
+        userData.schoolName === '' ||
+        userData.degree === '' ||
+        userData.location === '' ||
+        userData.companyName === '' ||
+        userData.position === '') {
         validated = false
       }
       else {
@@ -84,13 +81,13 @@ export default function CoverLetterEditor() {
               </select>
 
               {
-                userData.education == "Bachelor's Degree" || userData.education == "PhD" ? <div className="form-floating mb-3">
+                userData.education === "Bachelor's Degree" || userData.education === "PhD" ? <div className="form-floating mb-3">
                   <input type="text" className={`form-control ${validation}`} id="floatingInput" name='degree' placeholder="degree" value={userData.degree} onChange={handleChange} />
                   <label htmlFor="floatingInput">What is your Degree?</label>
                 </div> : <></>
               }
 
-              {userData.education == "None" ? <></> : <div className="form-floating mb-3">
+              {userData.education === "None" ? <></> : <div className="form-floating mb-3">
                 <input type="email" className={`form-control ${validation}`} id="floatingInput" name="schoolName" placeholder="name@example.com" value={userData.schoolName} onChange={handleChange} />
                 <label htmlFor="floatingInput">School Name</label>
               </div>}
