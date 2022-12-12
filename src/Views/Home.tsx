@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../../src/App.css'
-import Typewriter from 'typewriter-effect';
 
 export default function Home() {
   return (
