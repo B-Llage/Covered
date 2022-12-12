@@ -19,10 +19,10 @@ export default function Summary() {
 
                 <hr></hr>
                 <div>These are my some of my skills:</div>
-                {skills.map((skill) => { return <p className='m-0'>- {skill}</p> })}
+                {skills.map((skill, index) => { return <p className='m-0' key={index}>- {skill}</p> })}
                 <hr></hr>
 
-                <div className='my-3'>I'm applying for the positon of {userData.position} at {userData.companyName}</div>
+                <div className='my-3'>I'm applying for the position of {userData.position} at {userData.companyName}</div>
                 <Link to={"/editor"} className='btn btn-danger shadow w-50 p-3'>Go Back</Link>
                 <Link to={"/result"} className='btn btn-primary shadow w-50 p-3'>Continue</Link>
             </div>

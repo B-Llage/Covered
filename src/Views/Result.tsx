@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useAppSelector } from '../Hooks/hooks';
 import ReactMarkdown from 'react-markdown'
+import { PuffLoader } from 'react-spinners';
 
 export default function Result() {
     const [isLoading, setIsLoading] = useState(true)
@@ -12,49 +13,43 @@ export default function Result() {
 
         const generateCoverLetter = async () => {
 
-            const skillsString = skills.join(', ')
-            let prompt = ''
-            if (userData.education === 'None') {
-                prompt = `Generate cover letter for a ${userData.position} position at ${userData.companyName}. The name of the applicant is ${userData.name}, they are from ${userData.location}. Skills include . Letter is addressed to ${userData.companyName} Hiring Committee. Candidate is skilled in: ${skillsString}.`
-            }
-            else if (userData.education === 'High School Degree') {
-                prompt = `Generate cover letter for a ${userData.position} position at ${userData.companyName}. The name of the applicant is ${userData.name}, they are from ${userData.location}. The applicant education is a ${userData.education} from ${userData.schoolName}. Skills include . Letter is addressed to ${userData.companyName} Hiring Committee. Candidate is skilled in: ${skillsString}.`
-            }
-            else if (userData.education === "Bachelor's Degree" || userData.education === "PhD") {
-                prompt = `Generate cover letter for a ${userData.position} position at ${userData.companyName}. The name of the applicant is ${userData.name}, they are from ${userData.location}. The applicant education is a ${userData.education} in ${userData.degree} from ${userData.schoolName}. Skills include . Letter is addressed to ${userData.companyName} Hiring Committee. Candidate is skilled in: ${skillsString}.`
-            }
-
             const result = await axios.post(
-                "https://api.openai.com/v1/completions",
+                "https://e85d1y9k73.execute-api.us-west-1.amazonaws.com/CoveredRequest",
                 {
-                    "model": "text-davinci-003",
-                    "prompt": prompt,
-                    "max_tokens": 1500
-                },
-                {
-                    headers: { Authorization: `Bearer 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` }
+                    "userData": userData,
+                    "skills": skills,
                 }
             )
-            console.log(result.data.choices[0].text)
-            setResult(result.data.choices[0].text)
+            setResult(result.data.result)
         }
         generateCoverLetter().then(() => {
             setIsLoading(false)
-            console.log("success")
         })
 
     }, [])
 
 
     return (
-        <div className='home-width p-3'>
-            <hr></hr>
+        <div className='d-flex justify-content-center p-3'>
             {
-                isLoading ? <p>Loading... (This could take up to a minute)</p> :
-                    <>
+                isLoading ?
+                    <div className='container'>
+                        <h1 className='text-center'>Loading...</h1>
+                        <hr></hr>
+                        <div className='d-flex justify-content-center'>
+                            <PuffLoader
+                                className='py-4'
+                                color={"#527abc"}
+
+                                aria-label="Loading Spinner" />
+                        </div>
+                    </div>
+                    :
+                    <div className='home-width'>
                         <h1 className='text-center'>Result</h1>
+                        <hr></hr>
                         <ReactMarkdown>{result}</ReactMarkdown>
-                    </>
+                    </div>
             }
         </div>
     )

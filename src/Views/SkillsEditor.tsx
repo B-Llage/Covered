@@ -30,7 +30,7 @@ export default function SkillsEditor() {
             <hr></hr>
             {
                 skills.map((skill, index) => {
-                    return <SkillInput
+                    return <SkillInput key={index}
                         skill={skill}
                         index={index}
                         handleChange={handleChange}
