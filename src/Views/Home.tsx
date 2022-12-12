@@ -1,11 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../../src/App.css'
+import Typewriter from 'typewriter-effect';
 
 export default function Home() {
   return (
     <div className='py-5 home-width'>
-      <h1 className='display-1 fw-bold mb-2 text-center'>Covered</h1>
+      <div className='container d-flex justify-content-center align-items-end'>
+        <img
+          className="img-fluid mx-2"
+          style={{ height: "15vh", width: "auto" }}
+          src={`${process.env.PUBLIC_URL}/images/Covered.png`}
+          alt="logo"
+        />
+        <h1 className='display-1 fw-bold mb-2 text-center'>Covered</h1>
+      </div>
       <hr></hr>
       <h5 className='text-start'>Dear User,</h5>
       <p className='text-start text-wrap'>I am excited to introduce myself as your new Cover Letter Generator software! I use OpenAI technology to generate high-quality cover letters that are tailored to your specific needs.</p>
