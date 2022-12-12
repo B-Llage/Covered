@@ -3,12 +3,14 @@ import axios from 'axios';
 import { useAppSelector } from '../Hooks/hooks';
 import ReactMarkdown from 'react-markdown'
 import { PuffLoader } from 'react-spinners';
+import { useNavigate } from 'react-router-dom';
 
 export default function Result() {
     const [isLoading, setIsLoading] = useState(true)
     const [result, setResult] = useState('')
     const userData = useAppSelector(state => state.userData);
     const skills = useAppSelector(state => state.skills);
+    const navigate = useNavigate();
     useEffect(() => {
 
         const generateCoverLetter = async () => {
@@ -22,9 +24,21 @@ export default function Result() {
             )
             setResult(result.data.result)
         }
-        generateCoverLetter().then(() => {
-            setIsLoading(false)
-        })
+        if (
+            userData.name === '' ||
+            userData.companyName === '' ||
+            userData.degree === '' ||
+            userData.position === '' ||
+            userData.location === ''
+
+        ) {
+            navigate('/editor')
+        }
+        else {
+            generateCoverLetter().then(() => {
+                setIsLoading(false)
+            })
+        }
 
     }, [])
 

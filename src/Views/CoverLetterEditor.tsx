@@ -18,27 +18,21 @@ export default function CoverLetterEditor() {
   const onSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     let validated = false;
-    if (userData.education !== "Bachelor's Degree" && userData.education !== "PhD") {
-      if (userData.name === '' ||
-        userData.education === '' ||
-        userData.schoolName === '' ||
-        userData.location === '' ||
-        userData.companyName === '' ||
-        userData.position === '') {
-        validated = false;
-      }
-      else {
-        validated = true
-      }
+    if (userData.name === '' ||
+      userData.education === '' ||
+      userData.schoolName === '' ||
+      userData.location === '' ||
+      userData.companyName === '' ||
+      userData.position === '') {
+      validated = false
     }
     else {
-      if (userData.name === '' ||
-        userData.schoolName === '' ||
-        userData.degree === '' ||
-        userData.location === '' ||
-        userData.companyName === '' ||
-        userData.position === '') {
-        validated = false
+      validated = true
+    }
+    if (userData.education === "Bachelor's Degree" || userData.education === "PhD") {
+      if (
+        userData.degree === '' ) {
+        validated = false;
       }
       else {
         validated = true
@@ -88,7 +82,7 @@ export default function CoverLetterEditor() {
               }
 
               {userData.education === "None" ? <></> : <div className="form-floating mb-3">
-                <input type="email" className={`form-control ${validation}`} id="floatingInput" name="schoolName" placeholder="name@example.com" value={userData.schoolName} onChange={handleChange} />
+                <input type="text" className={`form-control ${validation}`} id="floatingInput" name="schoolName" placeholder="name@example.com" value={userData.schoolName} onChange={handleChange} />
                 <label htmlFor="floatingInput">School Name</label>
               </div>}
 
@@ -99,12 +93,12 @@ export default function CoverLetterEditor() {
               <h5 className='text-start'>About The Job</h5>
               <hr></hr>
               <div className="form-floating mb-3">
-                <input type="email" className={`form-control ${validation}`} id="floatingInput" name='position' placeholder="position" value={userData.position} onChange={handleChange} />
+                <input type="text" className={`form-control ${validation}`} id="floatingInput" name='position' placeholder="position" value={userData.position} onChange={handleChange} />
                 <label htmlFor="floatingInput">The Position</label>
               </div>
 
               <div className="form-floating mb-3">
-                <input type="email" className={`form-control ${validation}`} id="floatingInput" name='companyName' placeholder="company name" value={userData.companyName} onChange={handleChange} />
+                <input type="text" className={`form-control ${validation}`} id="floatingInput" name='companyName' placeholder="company name" value={userData.companyName} onChange={handleChange} />
                 <label htmlFor="floatingInput">Company Name</label>
               </div>
 

@@ -11,7 +11,7 @@ const initialState: FormState = {
         degree: '',
         schoolName: '',
       },
-      skills: ['test']
+      skills: ['Leadership']
   }
 export const formSlice = createSlice({
   name: 'form',
@@ -19,10 +19,6 @@ export const formSlice = createSlice({
   initialState,
   reducers: {
     setUserData: (state, action) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
       state.userData =  action.payload.userData
     },
     setSkills: (state, action) => {
@@ -31,7 +27,6 @@ export const formSlice = createSlice({
   }
 })
 
-// Action creators are generated for each case reducer function
 export const { setUserData, setSkills } = formSlice.actions
 
 export default formSlice.reducer
