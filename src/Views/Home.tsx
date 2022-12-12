@@ -5,14 +5,14 @@ import '../../src/App.css'
 export default function Home() {
   return (
     <div className='py-5 home-width'>
-      <div className='container d-flex justify-content-center align-items-end'>
+      <div className='container d-flex justify-content-center align-items-center'>
         <img
-          className="img-fluid mx-2"
-          style={{ height: "15vh", width: "auto" }}
+          className="img-fluid me-2"
+          style={{ height: "6em", width: "auto" }}
           src={`${process.env.PUBLIC_URL}/images/Covered.png`}
           alt="logo"
         />
-        <h1 className='display-1 fw-bold mb-2 text-center'>Covered</h1>
+        <h1 className='display-1 fw-bold mb-0 text-center'>Covered</h1>
       </div>
       <hr></hr>
       <h5 className='text-start'>Dear User,</h5>
