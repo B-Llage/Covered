@@ -4,24 +4,19 @@ import '../../src/App.css'
 
 export default function Home() {
   return (
-    <div className='py-5 home-width'>
-      <div className='container d-flex justify-content-center align-items-center'>
+    <div className='p-5 home-width w-100'>
+      <div className='container d-flex justify-content-center align-items-end mb-1'>
         <img
-          className="img-fluid me-2"
+          className="img-fluid me-2 mb-2"
           style={{ height: "6em", width: "auto" }}
           src={`${process.env.PUBLIC_URL}/images/Covered.png`}
           alt="logo"
         />
-        <h1 className='display-1 fw-bold mb-0 text-center'>Covered</h1>
       </div>
+      <h5 className='fs-6 text-center mb-1'>The average cover letter takes 6 hours to write</h5>
+      <h1 className='text-center w-100'>We've got you <span className='fw-bold'>Covered</span></h1>
       <hr></hr>
-      <h5 className='text-start'>Dear User,</h5>
-      <p className='text-start text-wrap'>I am excited to introduce myself as your new Cover Letter Generator software! I use OpenAI technology to generate high-quality cover letters that are tailored to your specific needs.</p>
-      <p className='text-start text-wrap'>I understand that writing a cover letter can be a daunting task, so I have made it my mission to make the process as simple and straightforward as possible. With me you can create a professional and effective cover letter quickly and easily.</p>
-      <p className='text-start text-wrap'>This particular paragraph was generated with the same technology I will use for your own cover letters, I hope you find it to be useful.</p>
-      <p className='text-end fst-italic'>Best regards, Covered</p>
-      <hr></hr>
-      <Link to={"/editor"} className='btn btn-primary shadow'>Let's Get Started</Link>
+      <Link to={"/editor"} className='btn btn-primary shadow w-100 p-3'>Let's Get Started</Link>
     </div>
   )
 }
