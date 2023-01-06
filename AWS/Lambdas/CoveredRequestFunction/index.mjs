@@ -35,7 +35,7 @@ export const handler = async (event) => {
     },
     {
       headers: {
-        Authorization: `Bearer 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`,
+        Authorization: `Bearer YOUR_API_KEY`,
       },
     }
   );
