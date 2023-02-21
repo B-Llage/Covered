@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import CoveredLayout from './Components/Layouts/CoveredLayout';
+import MainLayout from './Components/Layouts/CoveredLayout';
 import Home from './Views/Home';
 import CoverLetterEditor from './Views/CoverLetterEditor';
 import SkillsEditor from './Views/SkillsEditor';
@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route element={<CoveredLayout />}>
+        <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/editor" element={<CoverLetterEditor />} />
           <Route path="/skills" element={<SkillsEditor />} />

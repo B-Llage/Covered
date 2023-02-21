@@ -10,15 +10,14 @@
   }
 }
 
-.navbar {
-  -webkit-box-shadow: 0 8px 6px 6px #000;
-  -moz-box-shadow: 0 8px 6px 6px #000;
-  box-shadow: 0 8px 6px 6px #000;
-  height: 6vh;
+.main-content{
+  min-height: 90vh;
+  margin-top: 10vh;
+  padding: 1em;
 }
 
-.main-content {
-  height: 95vh;
+.navbar {
+  min-height: 10vh;
 }
 
 .small .react-colorful {

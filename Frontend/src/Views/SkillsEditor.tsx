@@ -43,7 +43,10 @@ export default function SkillsEditor() {
                     <></>
             }
             <hr></hr>
-            <Link to={"/summary"} className='btn btn-primary shadow my-2 w-100 p-3'>I'm Done!</Link>
+            <div className='d-flex'>
+                <Link to={"/editor"} className='btn btn-secondary shadow m-2 w-100 p-3'>Back</Link>
+                <Link to={"/summary"} className='btn btn-primary shadow m-2 w-100 p-3'>Continue</Link>
+            </div>
         </form>
     )
 }

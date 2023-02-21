@@ -12,7 +12,6 @@ export default function Result() {
     const skills = useAppSelector(state => state.skills);
     const navigate = useNavigate();
     useEffect(() => {
-
         const generateCoverLetter = async () => {
 
             const result = await axios.post(
@@ -27,11 +26,11 @@ export default function Result() {
         if (
             userData.name === '' ||
             userData.companyName === '' ||
-            userData.degree === '' ||
             userData.position === '' ||
             userData.location === ''
 
         ) {
+            console.log(userData)
             navigate('/editor')
         }
         else {
@@ -39,16 +38,15 @@ export default function Result() {
                 setIsLoading(false)
             })
         }
-
     }, [])
 
 
     return (
-        <div className='d-flex justify-content-center p-3'>
+        <>
             {
                 isLoading ?
-                    <div className='container'>
-                        <h1 className='text-center'>Loading...</h1>
+                    <div className='p-4'>
+                        <h1 className='text-center'>Loading</h1>
                         <hr></hr>
                         <div className='d-flex justify-content-center'>
                             <PuffLoader
@@ -59,12 +57,12 @@ export default function Result() {
                         </div>
                     </div>
                     :
-                    <div className='home-width'>
+                    <div className='container'>
                         <h1 className='text-center'>Result</h1>
                         <hr></hr>
-                        <ReactMarkdown>{result}</ReactMarkdown>
+                        <ReactMarkdown className='text-start'>{result}</ReactMarkdown>
                     </div>
             }
-        </div>
+        </>
     )
 }
