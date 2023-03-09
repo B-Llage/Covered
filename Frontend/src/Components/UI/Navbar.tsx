@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Navbar() {
+
+interface NavbarProps {
+  brandName: string;
+  logo: string;
+}
+
+
+export default function Navbar(navbarProps: NavbarProps) {
   return (
     <nav className="navbar navbar-expand bg-white px-2 shadow-sm fixed-top">
       <div className="container-fluid">
@@ -23,11 +30,11 @@ export default function Navbar() {
                 <img
                   className="img-fluid me-2"
                   style={{ height: "2em", width: "auto" }}
-                  src={`${process.env.PUBLIC_URL}/images/Covered.png`}
+                  src={navbarProps.logo}
                   alt="logo"
                 />
                 <h3 className="text-dark fw-bold m-0" aria-current="page">
-                  Covered
+                  {navbarProps.brandName}
                 </h3>
               </Link>
             </li>

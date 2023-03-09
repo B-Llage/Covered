@@ -10,6 +10,10 @@
   }
 }
 
+.main-banner{
+  min-height: 50vh;
+}
+
 .main-content{
   min-height: 90vh;
   margin-top: 10vh;

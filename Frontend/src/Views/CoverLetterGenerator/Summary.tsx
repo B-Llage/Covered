@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../Hooks/hooks';
+import { useAppSelector } from '../../Hooks/hooks';
 
 export default function Summary() {
     const skills = useAppSelector(state => state.skills);
@@ -8,7 +8,7 @@ export default function Summary() {
 
     return (
         <div className='container px-5'>
-            <h1 className='text-center'>Does this sound right?</h1>
+            <h1 className='text-center fw-bold'>Does this sound right?</h1>
             <hr></hr>
             <div className='text-start'>
                 <div>My name is <span className='fw-bold'>{userData.name}</span>, I'm from <span className='fw-bold'>{userData.location}</span>.</div>
@@ -26,8 +26,8 @@ export default function Summary() {
 
                 <div className='my-3'>I'm applying for the position of <span className='fw-bold'>{userData.position}</span> at <span className='fw-bold'>{userData.companyName}</span>.</div>
                 <div className='d-flex'>
-                    <Link to={"/skills"} className='btn btn-secondary shadow m-2 w-100 p-3'>Back</Link>
-                    <Link to={"/result"} className='btn btn-primary shadow m-2 w-100 p-3'>I'm Done!</Link>
+                    <Link to={"../skills"} className='btn btn-secondary shadow m-2 w-100 p-3'>Back</Link>
+                    <Link to={"../result"} className='btn btn-primary shadow m-2 w-100 p-3'>I'm Done!</Link>
                 </div>
             </div>
         </div>

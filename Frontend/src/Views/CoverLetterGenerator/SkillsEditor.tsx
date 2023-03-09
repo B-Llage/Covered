@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import SkillInput from '../Components/UI/SkillInput';
-import { useAppDispatch, useAppSelector } from '../Hooks/hooks';
-import { setSkills } from '../Slices/FormSlice';
+import SkillInput from '../../Components/UI/SkillInput';
+import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
+import { setSkills } from '../../Slices/FormSlice';
 
 export default function SkillsEditor() {
     const dispatch = useAppDispatch();
@@ -26,7 +26,7 @@ export default function SkillsEditor() {
     }
     return (
         <form className='w-100 p-1'>
-            <h1 className='text-center'>Tell us about your skills</h1>
+            <h1 className='text-center fw-bold'>Tell us about your skills</h1>
             <hr></hr>
             {
                 skills.map((skill, index) => {
@@ -44,8 +44,8 @@ export default function SkillsEditor() {
             }
             <hr></hr>
             <div className='d-flex'>
-                <Link to={"/editor"} className='btn btn-secondary shadow m-2 w-100 p-3'>Back</Link>
-                <Link to={"/summary"} className='btn btn-primary shadow m-2 w-100 p-3'>Continue</Link>
+                <Link to={"../editor"} className='btn btn-secondary shadow m-2 w-100 p-3'>Back</Link>
+                <Link to={"../summary"} className='btn btn-primary shadow m-2 w-100 p-3'>Continue</Link>
             </div>
         </form>
     )

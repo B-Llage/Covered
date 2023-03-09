@@ -1,7 +1,6 @@
 import React from 'react';
 
 interface SelectInputProps {
-  label: string;
   name: string;
   options: { value: string, label: string }[];
   defaultValue: { value: string, label: string };
@@ -11,7 +10,7 @@ interface SelectInputProps {
 }
 
 export default function SelectInput(props: SelectInputProps) {
-  const { label, name, options, value, defaultValue, onChange, error } = props;
+  const { name, options, value, defaultValue, onChange, error } = props;
   return (
     <>
       <div className="form mb-3">

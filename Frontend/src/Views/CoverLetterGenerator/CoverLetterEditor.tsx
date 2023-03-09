@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import SelectInput from '../Components/UI/Form/SelectInput';
-import TextInput from '../Components/UI/Form/TextInput';
-import { useAppDispatch, useAppSelector } from '../Hooks/hooks';
-import { setFormFieldsErrors, setFormFieldsValidity, setFormIsValid, setUserData } from '../Slices/FormSlice'
+import { Route, useNavigate } from 'react-router-dom';
+import SelectInput from '../../Components/UI/Form/SelectInput';
+import TextInput from '../../Components/UI/Form/TextInput';
+import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
+import { setFormFieldsErrors, setFormFieldsValidity, setFormIsValid, setUserData } from '../../Slices/FormSlice'
 
 export default function CoverLetterEditor() {
   const dispatch = useAppDispatch();
@@ -11,9 +11,6 @@ export default function CoverLetterEditor() {
   const formIsValid = useAppSelector(state => state.formIsValid);
   const formFieldsErrors = useAppSelector(state => state.formFieldsErrors);
   const formFieldsValidity = useAppSelector(state => state.formFieldsValidity);
-  //const [formIsValid, setFormIsValid] = useState(false);
-  //const [formFieldsErrors, setFormErrors] = useState({ name: false, education: false, schoolName: false, location: false, companyName: false, position: false, degree: false })
-  //const [formFieldsValidity, setWhatever] = useState({ name: false, education: false, schoolName: false, location: false, companyName: false, position: false, degree: false })
   const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -161,7 +158,7 @@ export default function CoverLetterEditor() {
     validateField('degree', userData.degree)
     //if form is valid, navigate to next page
     if (formIsValid) {
-      navigate("/skills")
+      navigate("../skills")
     }
   }
 
@@ -179,7 +176,6 @@ export default function CoverLetterEditor() {
               <TextInput label='Your Name' name='name' value={userData.name} onChange={handleChange} error={formFieldsErrors.name}></TextInput>
               <TextInput label='Your Location' name='location' value={userData.location} onChange={handleChange} error={formFieldsErrors.location}></TextInput>
               <SelectInput
-                label={'education'}
                 name={'education'}
                 defaultValue={
                   { label: 'Your Education', value: 'Lol' }
