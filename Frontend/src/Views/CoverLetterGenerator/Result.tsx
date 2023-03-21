@@ -4,8 +4,8 @@ import ReactMarkdown from 'react-markdown'
 import { useAppSelector } from '../../Hooks/hooks';
 import { PuffLoader } from 'react-spinners';
 import { useNavigate } from 'react-router-dom';
-import { PDFDownloadLink } from '@react-pdf/renderer';
 import CoverLetterPreview from '../../Components/UI/Preview/CoverLetterPreview';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 export default function Result() {
     const navigate = useNavigate();
@@ -57,7 +57,7 @@ export default function Result() {
                 setIsLoading(false)
             })
         }
-    }, [])
+    }, [navigate, userData, skills])
 
     return (
         <>
@@ -76,8 +76,8 @@ export default function Result() {
                     </div>
                     :
                     <div>
+                            <h1 className='text-center fw-bold mb-0'>Result</h1>
                         <div className='d-flex justify-content-center align-items-center w-100'>
-                            <h1 className='text-start fw-bold me-5 mb-0'>Result</h1>
                             <div>
                                 <PDFDownloadLink document={file} className="btn btn-primary shadow-sm py-2 mt-2" fileName="cover_letter.pdf">
                                     {({ blob, url, loading, error }) =>

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Route, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import SelectInput from '../../Components/UI/Form/SelectInput';
 import TextInput from '../../Components/UI/Form/TextInput';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
@@ -102,48 +102,47 @@ export default function CoverLetterEditor() {
     }
   }
 
-  const validateForm = () => {
-    console.log(userData)
-    console.log(formFieldsValidity)
-
-    if (formFieldsValidity.name === false ||
-      formFieldsValidity.education === false ||
-      formFieldsValidity.location === false ||
-      formFieldsValidity.companyName === false ||
-      formFieldsValidity.position === false) {
-      dispatch(setFormIsValid({ formIsValid: false }))
-
-    }
-    else {
-      switch (userData.education) {
-        case "High School Degree":
-          if (formFieldsValidity.schoolName === false) {
-            dispatch(setFormIsValid({ formIsValid: false }))
-          }
-          else {
-            dispatch(setFormIsValid({ formIsValid: true }))
-          }
-          break;
-        case "Bachelor's Degree":
-        case "PhD":
-          if (formFieldsValidity.schoolName === false || formFieldsValidity.degree === false) {
-            dispatch(setFormIsValid({ formIsValid: false }))
-          }
-          else {
-            dispatch(setFormIsValid({ formIsValid: true }))
-          }
-          break;
-        case "None":
-        default:
-          dispatch(setFormIsValid({ formIsValid: true }))
-          break;
-      }
-    }
-  }
+ 
 
   useEffect(() => {
+    const validateForm = () => {
+  
+      if (formFieldsValidity.name === false ||
+        formFieldsValidity.education === false ||
+        formFieldsValidity.location === false ||
+        formFieldsValidity.companyName === false ||
+        formFieldsValidity.position === false) {
+        dispatch(setFormIsValid({ formIsValid: false }))
+  
+      }
+      else {
+        switch (userData.education) {
+          case "High School Degree":
+            if (formFieldsValidity.schoolName === false) {
+              dispatch(setFormIsValid({ formIsValid: false }))
+            }
+            else {
+              dispatch(setFormIsValid({ formIsValid: true }))
+            }
+            break;
+          case "Bachelor's Degree":
+          case "PhD":
+            if (formFieldsValidity.schoolName === false || formFieldsValidity.degree === false) {
+              dispatch(setFormIsValid({ formIsValid: false }))
+            }
+            else {
+              dispatch(setFormIsValid({ formIsValid: true }))
+            }
+            break;
+          case "None":
+          default:
+            dispatch(setFormIsValid({ formIsValid: true }))
+            break;
+        }
+      }
+    }
     validateForm()
-  }, [formFieldsErrors])
+  }, [formFieldsErrors, dispatch, formFieldsValidity, userData.education])
 
   const onSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
