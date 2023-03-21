@@ -21,7 +21,7 @@ export default function Summary() {
                         }
 
                     </>}
-                <div>These are my some of my skills:</div>
+                <div>I'm great at:</div>
                 {skills.map((skill, index) => { return <p className='m-0' key={index}>- <span className='fw-bold'>{skill}</span></p> })}
 
                 <div className='my-3'>I'm applying for the position of <span className='fw-bold'>{userData.position}</span> at <span className='fw-bold'>{userData.companyName}</span>.</div>

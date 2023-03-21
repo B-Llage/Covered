@@ -26,7 +26,7 @@ export default function SkillsEditor() {
     }
     return (
         <form className='w-100 p-1'>
-            <h1 className='text-center fw-bold'>Tell us about your skills</h1>
+            <h1 className='text-center fw-bold'>What are you great at?</h1>
             <hr></hr>
             {
                 skills.map((skill, index) => {

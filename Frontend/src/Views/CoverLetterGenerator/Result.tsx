@@ -76,7 +76,7 @@ export default function Result() {
                     </div>
                     :
                     <div>
-                            <h1 className='text-center fw-bold mb-0'>Result</h1>
+                            <h1 className='text-center fw-bold mb-0'>We've got you Covered, {userData.name.split(' ')[0]}</h1>
                         <div className='d-flex justify-content-center align-items-center w-100'>
                             <div>
                                 <PDFDownloadLink document={file} className="btn btn-primary shadow-sm py-2 mt-2" fileName="cover_letter.pdf">

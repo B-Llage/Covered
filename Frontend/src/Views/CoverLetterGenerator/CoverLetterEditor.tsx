@@ -164,12 +164,12 @@ export default function CoverLetterEditor() {
   return (
     <div>
       <form>
-        <h1 className='text-center fw-bold'>Let's make this quick</h1>
+        <h1 className='text-center fw-bold'>Let's make this about you</h1>
         <hr></hr>
         <div className="container">
           <div className="row">
-            <div className="col-sm-12 col-md-6 p-2">
-              <h5 className='text-start'>About You</h5>
+            <div className="col-sm-12 col-md-6 p-1">
+              <h5 className='text-start'>Tell us about yourself</h5>
               <hr></hr>
 
               <TextInput label='Your Name' name='name' value={userData.name} onChange={handleChange} error={formFieldsErrors.name}></TextInput>
@@ -202,8 +202,8 @@ export default function CoverLetterEditor() {
 
             </div>
 
-            <div className="col-sm-12 col-md-6 p-2">
-              <h5 className='text-start'>About The Job</h5>
+            <div className="col-sm-12 col-md-6 p-1">
+              <h5 className='text-start'>Where are you applying?</h5>
               <hr></hr>
               <TextInput label='Company Name' name='companyName' value={userData.companyName} onChange={handleChange} error={formFieldsErrors.companyName}></TextInput>
               <TextInput label='The Position' name='position' value={userData.position} onChange={handleChange} error={formFieldsErrors.position}></TextInput>

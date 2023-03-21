@@ -11,7 +11,7 @@ export default function CoverLetterHome() {
         </h1>
       </div>
       <hr></hr>
-      <Link to={"editor"} className='btn btn-primary shadow p-4'>Let's Get Started</Link>
+      <Link to={"editor"} className='btn btn-primary shadow p-4'>Generate a Cover Letter</Link>
 
     </div>
   )
