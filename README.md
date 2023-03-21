@@ -5,7 +5,7 @@ Covered is a template for what a user focused AI Cover Letter generator.
 The goal is not to get you to create an account or purchase a subscription but to help you create cover letters easily.
 
 ## Is there an online instance I can access?
-yes! https://hecedu.github.io/Covered/
+yes! https://covered.jobmindai.xyz/
 
 ## How do I run my own instance?
 TBD
