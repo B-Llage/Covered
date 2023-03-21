@@ -41,8 +41,8 @@ export default function Navbar(navbarProps: NavbarProps) {
           </ul>
         </div>
         <a className="nav-link small text-black"
-          href="https://hectormagana.art">
-          © 2023 B-Llage
+          href="https://jobmindai.xyz/">
+          © 2023 JobMind AI
         </a>
       </div>
     </nav>
