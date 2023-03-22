@@ -2,6 +2,7 @@ import React from 'react';
 
 interface SelectInputProps {
   name: string;
+  label: string;
   options: { value: string, label: string }[];
   defaultValue: { value: string, label: string };
   value: string;
@@ -10,10 +11,10 @@ interface SelectInputProps {
 }
 
 export default function SelectInput(props: SelectInputProps) {
-  const { name, options, value, defaultValue, onChange, error } = props;
+  const { name, label, options, value, defaultValue, onChange, error } = props;
   return (
     <>
-      <div className="form mb-3">
+      <div className="form-floating mb-3">
         <select
           className={`form-select ${error ? 'is-invalid' : ''}`}
           name={name}
@@ -28,6 +29,7 @@ export default function SelectInput(props: SelectInputProps) {
           }
           )}
         </select>
+        <label> {label}</label>
       </div>
     </>
   );

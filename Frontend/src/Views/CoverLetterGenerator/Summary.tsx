@@ -11,23 +11,27 @@ export default function Summary() {
             <h1 className='text-center fw-bold'>Does this sound right?</h1>
             <hr></hr>
             <div className='text-start'>
-                <div>My name is <span className='fw-bold'>{userData.name}</span>, I'm from <span className='fw-bold'>{userData.location}</span>.</div>
-                {userData.education === 'None' ? <div>I have no previous education.</div> :
+                <div>My name is {userData.name}, I'm currently in {userData.location}.</div>
+                {userData.education === 'None' ? <p>I have no previous education.</p> :
                     <>
                         {
                             userData.education === 'High School Degree' ?
-                                <div>I have a <span className='fw-bold'>{userData.education}</span> from <span className='fw-bold'>{userData.schoolName}</span>.</div> :
-                                <div>I have a <span className='fw-bold'>{userData.education}</span> from <span className='fw-bold'>{userData.schoolName}</span> in <span className='fw-bold'>{userData.degree}</span>.</div>
+                                <p>I have a {userData.education} from {userData.schoolName}.</p> :
+                                <p>I have a {userData.education} from {userData.schoolName} in {userData.degree}.</p>
                         }
 
                     </>}
                 <div>I'm great at:</div>
-                {skills.map((skill, index) => { return <p className='m-0' key={index}>- <span className='fw-bold'>{skill}</span></p> })}
 
-                <div className='my-3'>I'm applying for the position of <span className='fw-bold'>{userData.position}</span> at <span className='fw-bold'>{userData.companyName}</span>.</div>
+                <ul>
+                {skills.map((skill, index) => { return <li className='m-0' key={index}>{skill}</li> })}
+                </ul>
+
+                <div className='my-3'>I'm applying for the position of {userData.position} at {userData.companyName}.</div>
+                <hr></hr>
                 <div className='d-flex'>
-                    <Link to={"../skills"} className='btn btn-secondary shadow m-2 w-100 p-3'>Back</Link>
-                    <Link to={"../result"} className='btn btn-primary shadow m-2 w-100 p-3'>I'm Done!</Link>
+                    <Link to={"../skills"} className='btn btn-primary shadow me-2 w-100 p-3'>Back</Link>
+                    <Link to={"../result"} className='btn btn-primary shadow ms-2 w-100 p-3'>I'm Done!</Link>
                 </div>
             </div>
         </div>

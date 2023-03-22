@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SelectInput from '../../Components/UI/Form/SelectInput';
 import TextInput from '../../Components/UI/Form/TextInput';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import { setFormFieldsErrors, setFormFieldsValidity, setFormIsValid, setUserData } from '../../Slices/FormSlice'
 
-export default function CoverLetterEditor() {
+export default function UserInformationEditor() {
   const dispatch = useAppDispatch();
   const userData = useAppSelector(state => state.userData);
   const formIsValid = useAppSelector(state => state.formIsValid);
@@ -56,36 +56,6 @@ export default function CoverLetterEditor() {
           dispatch(setFormFieldsValidity({ formFieldsValidity: { ...formFieldsValidity, schoolName: true } }))
         }
         break;
-      case 'location':
-        if (value.length === 0) {
-          dispatch(setFormFieldsErrors({ formFieldsErrors: { ...formFieldsErrors, location: true } }))
-          dispatch(setFormFieldsValidity({ formFieldsValidity: { ...formFieldsValidity, location: false } }))
-        }
-        else {
-          dispatch(setFormFieldsErrors({ formFieldsErrors: { ...formFieldsErrors, location: false } }))
-          dispatch(setFormFieldsValidity({ formFieldsValidity: { ...formFieldsValidity, location: true } }))
-        }
-        break;
-      case 'companyName':
-        if (value.length === 0) {
-          dispatch(setFormFieldsErrors({ formFieldsErrors: { ...formFieldsErrors, companyName: true } }))
-          dispatch(setFormFieldsValidity({ formFieldsValidity: { ...formFieldsValidity, companyName: false } }))
-        }
-        else {
-          dispatch(setFormFieldsErrors({ formFieldsErrors: { ...formFieldsErrors, companyName: false } }))
-          dispatch(setFormFieldsValidity({ formFieldsValidity: { ...formFieldsValidity, companyName: true } }))
-        }
-        break;
-      case 'position':
-        if (value.length === 0) {
-          dispatch(setFormFieldsErrors({ formFieldsErrors: { ...formFieldsErrors, position: true } }))
-          dispatch(setFormFieldsValidity({ formFieldsValidity: { ...formFieldsValidity, position: false } }))
-        }
-        else {
-          dispatch(setFormFieldsErrors({ formFieldsErrors: { ...formFieldsErrors, position: false } }))
-          dispatch(setFormFieldsValidity({ formFieldsValidity: { ...formFieldsValidity, position: true } }))
-        }
-        break;
       case 'degree':
         console.log(value)
         if (value.length === 0) {
@@ -97,23 +67,31 @@ export default function CoverLetterEditor() {
           dispatch(setFormFieldsValidity({ formFieldsValidity: { ...formFieldsValidity, degree: true } }))
         }
         break;
+      case 'location':
+        if (value.length === 0) {
+          dispatch(setFormFieldsErrors({ formFieldsErrors: { ...formFieldsErrors, location: true } }))
+          dispatch(setFormFieldsValidity({ formFieldsValidity: { ...formFieldsValidity, location: false } }))
+        }
+        else {
+          dispatch(setFormFieldsErrors({ formFieldsErrors: { ...formFieldsErrors, location: false } }))
+          dispatch(setFormFieldsValidity({ formFieldsValidity: { ...formFieldsValidity, location: true } }))
+        }
+        break;
       default:
         break;
     }
   }
 
- 
+
 
   useEffect(() => {
     const validateForm = () => {
-  
+
       if (formFieldsValidity.name === false ||
         formFieldsValidity.education === false ||
-        formFieldsValidity.location === false ||
-        formFieldsValidity.companyName === false ||
-        formFieldsValidity.position === false) {
+        formFieldsValidity.location === false) {
         dispatch(setFormIsValid({ formIsValid: false }))
-  
+
       }
       else {
         switch (userData.education) {
@@ -151,13 +129,11 @@ export default function CoverLetterEditor() {
     validateField('name', userData.name)
     validateField('education', userData.education)
     validateField('schoolName', userData.schoolName)
-    validateField('location', userData.location)
-    validateField('companyName', userData.companyName)
-    validateField('position', userData.position)
     validateField('degree', userData.degree)
+    validateField('location', userData.location)
     //if form is valid, navigate to next page
     if (formIsValid) {
-      navigate("../skills")
+      navigate("../job")
     }
   }
 
@@ -167,51 +143,39 @@ export default function CoverLetterEditor() {
         <h1 className='text-center fw-bold'>Let's make this about you</h1>
         <hr></hr>
         <div className="container">
-          <div className="row">
-            <div className="col-sm-12 col-md-6 p-1">
-              <h5 className='text-start'>Tell us about yourself</h5>
-              <hr></hr>
+          <TextInput label='Your Name' name='name' value={userData.name} onChange={handleChange} error={formFieldsErrors.name}></TextInput>
+          <TextInput label='Your Location' name='location' value={userData.location} onChange={handleChange} error={formFieldsErrors.location}></TextInput>
+          <SelectInput
+            name={'education'}
+            label = "Your Education"
+            defaultValue={
+              { label: '', value: '' }
+            }
+            options={[
+              { label: 'None', value: 'None' },
+              { label: 'High School Degree', value: 'High School Degree' },
+              { label: "Bachelor's Degree", value: "Bachelor's Degree" },
+              { label: 'PhD', value: 'PhD' }
+            ]}
+            value={userData.education}
+            onChange={handleSelect} />
 
-              <TextInput label='Your Name' name='name' value={userData.name} onChange={handleChange} error={formFieldsErrors.name}></TextInput>
-              <TextInput label='Your Location' name='location' value={userData.location} onChange={handleChange} error={formFieldsErrors.location}></TextInput>
-              <SelectInput
-                name={'education'}
-                defaultValue={
-                  { label: 'Your Education', value: 'Lol' }
-                }
-                options={[
-                  { label: 'None', value: 'None' },
-                  { label: 'High School Degree', value: 'High School Degree' },
-                  { label: "Bachelor's Degree", value: "Bachelor's Degree" },
-                  { label: 'PhD', value: 'PhD' }
-                ]}
-                value={userData.education}
-                onChange={handleSelect} />
+          {userData.education === "None" || userData.education === "" ?
+            <></> :
+            <TextInput label='School Name' name='schoolName' value={userData.schoolName} onChange={handleChange} error={formFieldsErrors.schoolName}></TextInput>
+          }
 
-              {
-                userData.education === "Bachelor's Degree" || userData.education === "PhD" ?
-                  <TextInput label='Degree' name='degree' value={userData.degree} onChange={handleChange} error={formFieldsErrors.degree}></TextInput> :
-                  <></>
-              }
-
-              {userData.education === "None" || userData.education === "" ?
-                <></> :
-                <TextInput label='School Name' name='schoolName' value={userData.schoolName} onChange={handleChange} error={formFieldsErrors.schoolName}></TextInput>
-              }
-
-
-            </div>
-
-            <div className="col-sm-12 col-md-6 p-1">
-              <h5 className='text-start'>Where are you applying?</h5>
-              <hr></hr>
-              <TextInput label='Company Name' name='companyName' value={userData.companyName} onChange={handleChange} error={formFieldsErrors.companyName}></TextInput>
-              <TextInput label='The Position' name='position' value={userData.position} onChange={handleChange} error={formFieldsErrors.position}></TextInput>
-            </div>
-          </div>
+          {
+            userData.education === "Bachelor's Degree" || userData.education === "PhD" ?
+              <TextInput label='Degree' name='degree' value={userData.degree} onChange={handleChange} error={formFieldsErrors.degree}></TextInput> :
+              <></>
+          }
         </div>
         <hr></hr>
-        <button className={`btn btn-primary shadow w-100 p-3`} onClick={onSubmit} disabled={!formIsValid}> {formIsValid ? 'Continue' : 'Please fill all fields'} </button>
+        <div className='d-flex'>
+        <Link to={"../"} className='btn btn-primary shadow me-2 w-100 p-3'>Back</Link>
+        <button className={`btn btn-primary shadow w-100 ms-2 p-3`} onClick={onSubmit} disabled={!formIsValid}> {formIsValid ? 'Continue' : 'Please fill all fields'} </button>
+        </div>
       </form>
     </div>
   )

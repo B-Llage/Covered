@@ -39,13 +39,13 @@ export default function SkillsEditor() {
             }
             {
                 skills.length < 5 ?
-                    <button type="button" className="btn btn-success w-100 my-2 py-1 shadow fs-4" onClick={handleAddButton}>+</button> :
+                    <button type="button" className="btn btn-success w-100 mb-3 py-3" onClick={handleAddButton}>Add Skill</button> :
                     <></>
             }
-            <hr></hr>
+            <hr className='mb-3'></hr>
             <div className='d-flex'>
-                <Link to={"../editor"} className='btn btn-secondary shadow m-2 w-100 p-3'>Back</Link>
-                <Link to={"../summary"} className='btn btn-primary shadow m-2 w-100 p-3'>Continue</Link>
+                <Link to={"../job"} className='btn btn-primary shadow me-2 w-100 p-3'>Back</Link>
+                <Link to={"../summary"} className='btn btn-primary shadow ms-2 w-100 p-3'>Continue</Link>
             </div>
         </form>
     )
