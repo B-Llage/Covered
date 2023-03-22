@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import SelectInput from '../../Components/UI/Form/SelectInput';
 import TextInput from '../../Components/UI/Form/TextInput';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import { setFormFieldsErrors, setFormFieldsValidity, setFormIsValid, setUserData } from '../../Slices/FormSlice'
